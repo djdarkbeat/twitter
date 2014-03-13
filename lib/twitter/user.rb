@@ -34,7 +34,7 @@ module Twitter
 
     # @return [Array<Twitter::Entity::URI>]
     def description_uris
-      Array(@attrs[:entities][:description][:urls]).collect do |entity|
+      Array(@attrs['entities']['description']['urls']).collect do |entity|
         Entity::URI.new(entity)
       end
     end
@@ -50,12 +50,12 @@ module Twitter
 
     # @return [String] The URL to the user's website.
     def website
-      Addressable::URI.parse(@attrs[:url]) unless @attrs[:url].nil?
+      Addressable::URI.parse(@attrs['url']) unless @attrs['url'].nil?
     end
     memoize :website
 
     def website?
-      !!@attrs[:url]
+      !!@attrs['url']
     end
     memoize :website?
   end

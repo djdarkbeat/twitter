@@ -129,7 +129,7 @@ describe Twitter::REST::Client do
       expect(authorization).to eq('Bearer BT')
     end
     it 'creates the correct auth headers with supplied bearer token' do
-      token = Twitter::Token.new(:token_type => 'bearer', :access_token => 'BT')
+      token = Twitter::Token.new('token_type' => 'bearer', 'access_token' => 'BT')
       client = Twitter::REST::Client.new(:bearer_token => token)
       authorization = client.send(:bearer_auth_header)
       expect(authorization).to eq('Bearer BT')
